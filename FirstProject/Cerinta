@@ -1,10 +1,9 @@
-Deadline 19 Martie 23:59 (atunci trebuie sa aveti ultimul update pe GitHub!)
-Opțiunea 1:
+
 ● Implementați următorii 3 algoritmi de sortare:
-○ RadixSort (ideal in mai multe baze inclusiv 2^16)
-○ MergeSort
-○ ShellSort
-+ Inca 2 la algere dintre care unul in O(n logn) sau bazat pe numarare…
+ ○ RadixSort (ideal in mai multe baze inclusiv 2^16)
+ ○ MergeSort
+ ○ ShellSort
+ + Inca 2 la algere dintre care unul in O(n logn) sau bazat pe numarare…
 ● Comparati timpii de rulare pe mai multe teste cu numere naturale, între cei 5 algoritmi
 dar și cu timpul de rulare al algoritmului de sortare nativ al limbajul de programare ales.
 ● Faceți o prezentare a acestor comparații (cu niște slide-uri, rapoarte.)
