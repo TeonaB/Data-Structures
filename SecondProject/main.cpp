@@ -5,11 +5,11 @@ ofstream g("mergeheap.out");
 
 class Node
 {
-private:
+public:
     int val;
     Node *child;
     Node *bro;
-public:
+
     Node(int valoare):val(valoare),child(nullptr),bro(nullptr){}
     Node(Node* nod)
     {
@@ -20,21 +20,6 @@ public:
     int getData() const
     {
         return val;
-    }
-    Node *getChild() const {
-        return child;
-    }
-
-    void setChild(Node *child) {
-        Node::child = child;
-    }
-
-    Node *getBro() const {
-        return bro;
-    }
-
-    void setBro(Node *bro) {
-        Node::bro = bro;
     }
     void clear(Node* node) {
         if (node == nullptr) {
@@ -61,7 +46,8 @@ public:
     bool isEmpty() const {
         return radacina == nullptr;
     }
-    //cerinta 1
+    PairingHeap(const int& valoare) : radacina(new Node(valoare)) {}
+    //pentru cerinta 1
     void insert(const int& value)
     {
         if(radacina==nullptr)
@@ -69,20 +55,20 @@ public:
             radacina = new Node(value);
             return;
         }
-        Node* aux = new Node(value);
+        Node* auxiliar = new Node(value);
         if(radacina->getData() < value)
-            swap(radacina, aux);
-        aux->setBro(radacina->getChild());
-        radacina->setChild(aux);
+            swap(radacina, auxiliar);
+        auxiliar->bro=radacina->child;
+        radacina->child=auxiliar;
     }
     //cerinta 2
     int getMaxim()
     {
         int maxim = radacina->getData();
         Node* oldroot = radacina;
-        if(radacina->getChild()== nullptr)
+        if(radacina->child== nullptr)
             radacina = nullptr;
-        else radacina = mergePairs(radacina->getChild());
+        else radacina = mergePairs(radacina->child);
         delete oldroot;
         return maxim;
     }
@@ -97,20 +83,20 @@ public:
         if(other.radacina->getData()>radacina->getData()){
             swap(radacina,other.radacina);
         }
-        other.radacina->setBro(radacina->getChild());
-        radacina->setChild(other.radacina);
+        other.radacina->bro=radacina->child;
+        radacina->child=other.radacina;
         other.radacina = nullptr;
     }
     //cerinta 2
     Node* mergePairs(Node* first) {
-        if (first == nullptr || first->getBro() == nullptr)
+        if (first == nullptr || first->bro == nullptr)
             return first;
         Node *next;
         PairingHeap h1;
         h1.radacina = first;
         PairingHeap h2;
-        h2.radacina = first->getBro();
-        next = first->getBro()->getBro();
+        h2.radacina = first->bro;
+        next = first->bro->bro;
         h1.merge(h2);
         PairingHeap h3;
         h3.radacina = mergePairs(next);
