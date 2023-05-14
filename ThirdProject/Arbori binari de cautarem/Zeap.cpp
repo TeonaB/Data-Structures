@@ -77,8 +77,8 @@ int calcmax() {
 }
 
 int main() {
-    zeap.insert(2000000005);
-    zeap.insert(-1000000005);
+    zeap.insert(1000000000);
+    zeap.insert(-1000000000);
     string op;
     int x;
     while (f >> op) {
