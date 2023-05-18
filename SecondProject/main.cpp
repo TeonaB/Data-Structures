@@ -110,8 +110,8 @@ int main()
 {
     int N, Q;
     f >> N >> Q;
-    PairingHeap heap[N];
-    for (int i = 0; i < Q; i++)
+    PairingHeap heap[N+1];
+    for (int i = 1; i <= Q; i++)
     {
         int op, m, x, y;
         f >> op;
@@ -119,17 +119,17 @@ int main()
         {
             case 1:
                 f >> m >> x;
-                heap[m-1].insert(x);
+                heap[m].insert(x);
                 break;
 
             case 2:
                 f >> m;
-                g << heap[m-1].getMaxim()<<"\n";
+                g << heap[m].getMaxim()<<"\n";
                 break;
 
             case 3:
                 f >> x >> y;
-                heap[x-1].merge(heap[y-1]);
+                heap[x].merge(heap[y]);
                 break;
         }
     }
