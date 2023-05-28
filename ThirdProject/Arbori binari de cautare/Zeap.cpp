@@ -14,9 +14,10 @@ void insert(int x) {
     if (zeap.count(x)) {
         return;
     }
-
+    ///it1 si it2 sunt pozitiile mai mari sau egale cu x
     auto it1 = zeap.lower_bound(x);
     auto it2 = it1 == zeap.begin() ? zeap.end() : prev(it1);
+    ///x1 si x2 sunt cele 2 valori imediat mai mari decat x
     int x1 = it1 == zeap.end() ? *prev(it1) : *it1;
     int x2 = it2 == zeap.end() ? *prev(it2) : *it2;
     zeap.insert(x);
