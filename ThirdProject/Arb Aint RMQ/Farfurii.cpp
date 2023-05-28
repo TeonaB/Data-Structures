@@ -11,6 +11,7 @@ int main()
     f>>N>>K;
     long  i=1;
     ///atata timp cat mai putem inca crea perechi de farfurii cu marimea i afisam
+    ///ne folosim de exemplu si luam i-ul crescator si dupa descrescator
     while((N-i) * (N-i-1) /2 > K)
     {
         g<<i<<" ";
