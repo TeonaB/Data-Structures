@@ -6,10 +6,12 @@ ifstream f("baruri.in");
 ofstream g("baruri.out");
 int t, n, m, op, b, d, x;
 int aib[100005];
+///Funcția "lsb" returnează cel mai mic bit setat în reprezentarea binară a numărului "x". Această funcție este utilizată pentru a determina părinții și copiii în arborele binar de indexare.
 int lsb(int x)
 {
     return (x&(-x));
 }
+///Funcția "update" actualizează valorile din arborele binar de indexare. Ea adaugă "val" la fiecare nod din calea către rădăcină, începând de la nodul "x" și mergând spre părinte până la limita "n".
 void update(int x, int val)
 {
     while(x <= n)
@@ -18,6 +20,7 @@ void update(int x, int val)
         x += lsb(x);
     }
 }
+///Funcția "suma" calculează suma valorilor până la nodul "x" în arborele binar de indexare. Aceasta adaugă valorile de la nodurile din calea către rădăcină, începând de la nodul "x" și mergând spre părinte până la nodul 0.
 int suma(int x)
 {
     int sum=0;
@@ -31,7 +34,7 @@ int suma(int x)
 int main()
 {
     f >> t;
-
+    /// Respectam cerinta si pentru fiecare operator citit efectuam operatiile
     while (t--)
     {
         f >> n;
@@ -65,6 +68,7 @@ int main()
                 update(d,x);
             }
         }
+        ///nu uitam sa reactualixam arborele binar de indexare
         for (int i = 1; i <= n; i++)
             aib[i]=0;
     }
