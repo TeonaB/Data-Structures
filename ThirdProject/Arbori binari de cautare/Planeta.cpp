@@ -4,16 +4,18 @@ ifstream f("planeta.in");
 ofstream g("planeta.out");
 long long n,k;
 long long v[65];
+///vom parcurge recursiv arborele folosindu ne de enunt pt a face o parcurgere in preordine
 void planeta(long i, long j, long long a)
 {
     int radacina=i;
+    ///vom reactualiza radacina verifican ca respecta arborele
     while(radacina<j && a-v[radacina-i]*v[j-radacina]>=0)
     {
         a=a-v[radacina-i]*v[j-radacina];
         radacina+=1;
     }
     g<<radacina<<" ";
-
+    ///afisam radacina si apoi fiecare surbarbore recursiv pe rand
     if(radacina>i)
         planeta(i,radacina-1, a/v[j-radacina]);
     if(radacina<j)
