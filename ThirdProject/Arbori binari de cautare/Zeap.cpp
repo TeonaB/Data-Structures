@@ -7,7 +7,9 @@ ifstream f("zeap.in");
 ofstream g("zeap.out");
 set<int> zeap;
 map<int, int> dif;
-
+///vom utiliza set ul pentru a implementa zeap-ul din enunt
+///cand il inseram trebuie sa verificam daca mai exista si sa il inseram
+///nu uitam sa actualizam diferenta pentru elemente
 void insert(int x) {
     if (zeap.count(x)) {
         return;
@@ -29,7 +31,7 @@ void insert(int x) {
     }
 
 }
-
+///pentru stergere verificam daca exista si dupa il stergem si actualizam iar pozitiile si diferentele din map si zeap
 int erase(int x) {
     if (!zeap.count(x)) {
         return -1;
@@ -52,18 +54,18 @@ int erase(int x) {
     zeap.erase(x);
     return 0;
 }
-
+/// folosim un count pentru a verifica daca exista
 int check(int x) {
     return zeap.count(x);
 }
-
+///pentru minim folosim map-ul creat si prima valoare
 int calcmin() {
     if (zeap.size() < 4) {
         return -1;
     }
     return dif.begin()->first;
 }
-
+//pentru maxim folosim valorile din ambele capete
 int calcmax() {
     if (zeap.size() < 4) {
         return -1;
@@ -77,6 +79,7 @@ int calcmax() {
 }
 
 int main() {
+    ///inseram valori in ambele capete ca sa nu iesim din zeap
     zeap.insert(1000000000);
     zeap.insert(-1000000000);
     string op;
